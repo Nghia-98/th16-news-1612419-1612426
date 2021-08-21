@@ -1,0 +1,49 @@
+<div id="particles-js">
+  <div class="lock-wrapper">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="lock-box glass">
+          <div class="main">
+            <h3 id="page-title">Please Log In, or <a href="/register">Sign Up</a></h3>
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <a href="/login/fb" class="btn btn-lg btn-primary btn-block">Facebook</a>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <a href="login/google" class="btn btn-lg btn-info btn-block">Google</a>
+              </div>
+            </div>
+            <div class="login-or">
+              <hr class="hr-or">
+              <span class="span-or">or</span>
+            </div>
+            <form action="/login" method="post">
+              <div class="form-group">
+                <label for="inputUsernameEmail">Email</label>
+                <small class="text-danger ml-auto hide" id="email_invalid">*Email invalid</small>
+                <input type="text" name="email" class="form-control" id="email" required> 
+              </div>
+              <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <a class="ml-auto" href="/verify/get-email">Forgot password?</a>
+                <input type="password" name="password" class="form-control" id="password" required>
+              </div>
+              <div class="d-flex mt-3">
+                <button type="submit" class="btn btn btn-primary ml-auto" id="submit" disabled>
+                  <span style="color:white;">Log In</span>
+                </button>
+              </div>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script>
+  var errorMessage = "{{message}}"
+  console.log('err',errorMessage)
+</script>

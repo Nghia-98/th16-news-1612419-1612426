@@ -1,0 +1,97 @@
+{{> header}}
+	<div class="slider-top-area">
+        
+		<div class="container">
+            <div id="particles-js">
+		        <div class="row">
+		            <div class="col-xs-12">
+		                <div class="stp-des text-center">
+		                    <div class="logo">
+								<a href="/">Technews<span>.</span></a>
+							</div>
+		                    <p class="stp-tagline">
+		                        A Smart Minimal Bloging Template.
+		                    </p>
+		                </div>
+		            </div>
+		        </div>
+            </div>
+        </div>
+    </div>
+       <!--slider blog area start-->
+        <div class="slider-blog-area">
+            <div class="slider-blog active-slider-blog full-carsoule blog-mar">
+              {{#each mostViewWeek}}
+                <div class="single-blog ">
+                    <div class="blog-img" style = "position: relative;">
+                      {{#if isPremium}}	
+                        <div class="premium-post">
+                          Premium
+                        </div>
+                        {{/if}}
+                        <a href="post/{{_id}}"><img src="{{thumb}}" alt=""></a>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-title">
+                            <h3><a href="post/{{_id}}">{{name}} </a></h3>
+                        </div>
+                        <div class="author-date">
+                            <ul>
+                                <li><a href="#"><i class="icon-profile-male"></i>{{creator}}</a></li>
+                                <li><i class="icon-calendar"></i>{{formatDate created_at}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+              {{/each}}
+            </div>
+        </div> 
+
+			<div class="container-fluid no-left-padding no-right-padding page-content">
+				<!-- Container -->
+				<div class="container no-left-padding no-right-padding">
+					<div class="row">
+						<!-- Content Area -->
+						<div class="col-lg-8 col-md-6 content-area">
+							<!-- Row -->
+							<div class="row blog-masonry-list">
+								{{#each posts}}
+									{{>single-post post=this}}
+								{{/each}}
+							</div><!-- Row /- -->
+							
+							{{!-- <nav class="navigation pagination">
+								<h2 class="screen-reader-text">Posts navigation</h2>
+								<div class="nav-links">
+									<a class="prev page-numbers" href="#">Previous</a>
+									<span class="page-numbers current">
+										<span class="meta-nav screen-reader-text">Page </span>1
+									</span>
+									<a class="page-numbers" href="#"><span class="meta-nav screen-reader-text">Page </span>2</a>
+									<a class="page-numbers" href="#"><span class="meta-nav screen-reader-text">Page </span>3</a>
+									<a class="page-numbers" href="#"><span class="meta-nav screen-reader-text">Page </span>...</a>
+									<a class="page-numbers" href="#"><span class="meta-nav screen-reader-text">Page </span>6</a>
+									<a class="next page-numbers" href="#">Next</a>
+								</div>
+							</nav> --}}
+              
+						</div><!-- Content Area /- -->
+						<!-- Widget Area -->
+						<div class="col-lg-4 col-md-6 widget-area">
+              {{>sidebar posts=mostView categories=popularCategories}}
+						</div><!-- Widget Area /- -->
+					</div>
+				</div><!-- Container /- -->
+			</div><!-- Page Content /- -->
+{{> footer}}
+
+
+<script>
+    var posts = {{{json posts}}};
+    var mostViewWeek = {{{json mostViewWeek}}};
+    var mostView = {{{json mostView}}};
+    var popularCategories = {{{json popularCategories}}};
+    console.log('data',{
+        posts,mostViewWeek,mostView,popularCategories
+    });
+</script>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="shortcut icon" href="{{customerPath}}img/favicon.ico">
+  <!--STYLESHEET-->
+  <!--=================================================-->
+  <!--Roboto Slab Font [ OPTIONAL ] -->
+  <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/css?family=Roboto:500,400italic,100,700italic,300,700,500italic,400"
+    rel="stylesheet">
+  <!--Bootstrap Stylesheet [ REQUIRED ]-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!--Font Awesome [ OPTIONAL ]-->
+  <link href="{{customerPath}}plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!--Switchery [ OPTIONAL ]-->
+  <link href="{{customerPath}}plugins/switchery/switchery.min.css" rel="stylesheet">
+  <!--Bootstrap Select [ OPTIONAL ]-->
+  <link href="{{customerPath}}plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
+
+  <!--Bootstrap Validator [ OPTIONAL ]-->
+  <link href="{{customerPath}}plugins/bootstrap-validator/bootstrapValidator.min.css" rel="stylesheet">
+  <!--Demo [ DEMONSTRATION ]-->
+  <link href="{{customerPath}}css/demo/jquery-steps.min.css" rel="stylesheet">
+  <!--Demo [ DEMONSTRATION ]-->
+  <link href="{{customerPath}}css/demo/jasmine.css" rel="stylesheet">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.3/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.3/build/css/themes/default.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.3/build/css/themes/semantic.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.3/build/css/themes/bootstrap.min.css"/>
+  {{#if haveDataTable}}
+  <!--Bootstrap Table [ OPTIONAL ]-->
+  <link href="{{customerPath}}plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet">
+  <link href="{{customerPath}}plugins/datatables/extensions/Responsive/css/dataTables.responsive.css" rel="stylesheet">
+  {{/if}}
+  {{#if haveEditor}}
+  <link href="{{customerPath}}plugins/summernote/summernote.min.css" rel="stylesheet">
+  {{/if}}
+    {{#if haveDatepicker}}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+  {{/if}}
+  <!--SCRIPT-->
+  <!--=================================================-->
+  <!--Page Load Progress Bar [ OPTIONAL ]-->
+  <link href="{{customerPath}}plugins/pace/pace.min.css" rel="stylesheet">
+  <script src="{{customerPath}}plugins/pace/pace.min.js"></script>
+  <!--Jasmine Stylesheet [ REQUIRED ]-->
+  <link href="{{customerPath}}css/style.css" rel="stylesheet">
+  <link href="{{customerPath}}css/{{style}}.css" rel="stylesheet">
+</head>
+<!--TIPS-->
+<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
+
+<body>
+  <div id="container" class="effect mainnav-sm navbar-fixed mainnav-fixed">
+    <!--NAVBAR-->
+    <!--===================================================-->
+    <header id="navbar">
+      <div id="navbar-container" class="boxed">
+        <!--Navbar Dropdown-->
+        <!--================================-->
+        <div class="navbar-content clearfix">
+          <ul class="nav navbar-top-links pull-left">
+            <!--Navigation toogle button-->
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+            <li class="tgl-menu-btn">
+              <a class="mainnav-toggle" href="#"> <i class="fa fa-navicon fa-lg"></i> </a>
+            </li>
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+            <!--End Navigation toogle button-->
+          </ul>
+          <ul class="nav navbar-top-links pull-right">
+            <!--Profile toogle button-->
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+            <!--End Profile toogle button-->
+            <!--User dropdown-->
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+            <li id="dropdown-user" class="dropdown">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
+                <span class="pull-right"> <img class="img-circle img-user media-object" src="{{user.avatar}}"
+              onerror="this.src = 'https://i.imgur.com/6RUJRyM.png';"
+                    alt="Profile Picture"> </span>
+                <div class="username hidden-xs">{{user.name}}</div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right with-arrow">
+                <!-- User dropdown menu -->
+                <ul class="head-list">
+                  <li>
+                    <a href="/dashboard/profile"> <i class="fa fa-user fa-fw"></i> Profile </a>
+                  </li>
+                  {{!-- <li>
+                    <a href="#"> <i class="fa fa-gear fa-fw"></i> Settings </a>
+                  </li> --}}
+                  <li>
+                    <a href="/logout"> <i class="fa fa-sign-out fa-fw"></i> Logout </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+            <!--End user dropdown-->
+          </ul>
+        </div>
+        <!--================================-->
+        <!--End Navbar Dropdown-->
+      </div>
+    </header>
+    <!--===================================================-->
+    <!--END NAVBAR-->
+    <div class="boxed">
+      <!--CONTENT CONTAINER-->
+      <!--===================================================-->
+      <div id="content-container">
+
+        {{{body}}}
+      </div>
+      <!--===================================================-->
+      <!--END CONTENT CONTAINER-->
+      <!--MAIN NAVIGATION-->
+      <!--===================================================-->
+      <nav id="mainnav-container">
+        <!--Brand logo & name-->
+        <!--================================-->
+        <div class="navbar-header">
+          <a href="/dashboard" class="navbar-brand">
+            <i class="fa fa-forumbee brand-icon"></i>
+            <div class="brand-title">
+              <span class="brand-text">WOW</span>
+            </div>
+          </a>
+        </div>
+        <!--================================-->
+        <!--End brand logo & name-->
+        <div id="mainnav">
+          <!--Menu-->
+          <!--================================-->
+          <div id="mainnav-menu-wrap">
+            <div class="nano">
+              <div class="nano-content">
+                <ul id="mainnav-menu" class="list-group">
+                  <!--Category name-->
+                  <li class="list-header">Home</li>
+                  <!--Menu list item-->
+                  <li> <a href="/dashboard"> <i class="fa fa-home"></i> <span class="menu-title"> Dashboard </span> </a>
+                  </li>
+                  <!--Category name-->
+                  <li class="list-header">Content</li>
+                  <!--Menu list item-->
+                  <li>
+                    <a class="collapsed" data-toggle="collapse" href="#nav_1" role="button" aria-expanded="true"
+                      aria-controls="nav_1">
+                      <i class="fa fa-thumb-tack"></i>
+                      <span class="menu-title">
+                        Posts
+                      </span>
+                      <i class="arrow"></i>
+                    </a>
+
+                    <!--Submenu-->
+                    <ul class="collapse" id="nav_1">
+                      <li class="d-flex">
+                        <h4 style="display:none;">Posts</h4>
+                      </li>
+                      <li><a href="/dashboard/posts"><i class="fa fa-caret-right"></i> All Posts </a></li>
+                      <li><a href="/dashboard/add-post"><i class="fa fa-caret-right"></i> Add New </a></li>
+                    </ul>
+                  </li>
+                {{#ifCond  rule '==' 'editor'}}
+                   <!--Menu list item-->
+                  <li>
+                    <a class="collapsed" data-toggle="collapse" href="#nav_2" role="button" aria-expanded="true"
+                      aria-controls="nav_2">
+                      <i class="fa fa-th-large" aria-hidden="true"></i>
+                      <span class="menu-title">
+                       My  Categories
+                      </span>
+                      <i class="arrow"></i>
+                    </a>
+
+                    <!--Submenu-->
+                    <ul class="collapse" id="nav_2">
+                      <li class="d-flex">
+                        <h4 style="display:none;">View</h4>
+                      </li>
+                      <li><a href="/dashboard/manager-categories"><i class="fa fa-caret-right"></i> All Categories </a></li>
+                      {{!-- <li><a href="/dashboard/add-category"><i class="fa fa-caret-right"></i> Add New </a></li> --}}
+                    </ul>
+                  </li>
+                {{/ifCond}}
+                {{#ifCond  rule '==' 'admin'}}
+                  <!--Menu list item-->
+                  <li>
+                    <a class="collapsed" data-toggle="collapse" href="#nav_2" role="button" aria-expanded="true"
+                      aria-controls="nav_2">
+                      <i class="fa fa-th-large" aria-hidden="true"></i>
+                      <span class="menu-title">
+                        Categories
+                      </span>
+                      <i class="arrow"></i>
+                    </a>
+
+                    <!--Submenu-->
+                    <ul class="collapse" id="nav_2">
+                      <li class="d-flex">
+                        <h4 style="display:none;">Categories</h4>
+                      </li>
+                      <li><a href="/dashboard/categories"><i class="fa fa-caret-right"></i> All Categories </a></li>
+                      {{!-- <li><a href="/dashboard/add-category"><i class="fa fa-caret-right"></i> Add New </a></li> --}}
+                    </ul>
+                  </li>
+                  <!--Menu list item-->
+                  <li>
+                    <a class="collapsed" data-toggle="collapse" href="#nav_3" role="button" aria-expanded="true"
+                      aria-controls="nav_3">
+                      <i class="fa fa-tags" aria-hidden="true"></i>
+                      <span class="menu-title">
+                        Tags
+                      </span>
+                      <i class="arrow"></i>
+                    </a>
+
+                    <!--Submenu-->
+                    <ul class="collapse" id="nav_3">
+                      <li class="d-flex">
+                        <h4 style="display:none;">Tags</h4>
+                      </li>
+                      <li><a href="/dashboard/tags"><i class="fa fa-caret-right"></i> All Tags </a></li>
+                      {{!-- <li><a href="/dashboard/add-tag"><i class="fa fa-caret-right"></i> Add New </a></li> --}}
+                    </ul>
+                  </li>
+                  {{/ifCond }}
+                  <!--Category name-->
+                  <li class="list-header">Others</li>
+                  <!--Menu list item-->
+                  <li>
+                    <a class="collapsed" data-toggle="collapse" href="#nav_4" role="button" aria-expanded="true"
+                      aria-controls="nav_4">
+                      <i class="fa fa-user" aria-hidden="true"></i>
+                      <span class="menu-title">
+                        Users
+                      </span>
+                      <i class="arrow"></i>
+                    </a>
+
+                    <!--Submenu-->
+                    <ul class="collapse" id="nav_4">
+                      <li class="d-flex">
+                        {{#ifCond  rule '==' 'admin'}}
+                        <h4 style="display:none;">Users</h4>
+                         {{/ifCond }}
+                          {{#ifCond  rule '!=' 'admin'}}
+                        <h4 style="display:none;">User</h4>
+                         {{/ifCond }}
+                      </li>
+                       {{#ifCond  rule '==' 'admin'}}
+                        <li><a href="/dashboard/users"><i class="fa fa-caret-right"></i> Employees </a></li>
+                        <li><a href="/dashboard/subscribers"><i class="fa fa-caret-right"></i> Subscribers </a></li>
+                        {{/ifCond }}
+                      {{!-- <li><a href="/dashboard/add-user"><i class="fa fa-caret-right"></i> Add New </a></li> --}}
+                      <li><a href="/dashboard/profile"><i class="fa fa-caret-right"></i> Your Profile </a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!--================================-->
+          <!--End menu-->
+        </div>
+      </nav>
+      <!--===================================================-->
+      <!--END MAIN NAVIGATION-->
+      <div class="select-rule" id="select-rule-box">
+        <button class="btn" onclick="removeSelectRule()">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+        <h4 class="text-center">
+          Thay đổi phân hệ người dùng  (for testing)
+        </h4>
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link rule-item active" id="admin-rule" onclick="selectRule('admin',this)" href="#">Administrator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link rule-item" href="#" id="editor-rule" onclick="selectRule('editor',this)">Editor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link rule-item" href="#" id="writer-rule" onclick="selectRule('writer',this)">Writer</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- FOOTER -->
+    <!--===================================================-->
+    <footer id="footer">
+      <!-- Visible when footer positions are fixed -->
+      <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+      <div class="show-fixed pull-right">
+        <ul class="footer-list list-inline">
+          <li>
+            <p class="text-sm">SEO Proggres</p>
+            <div class="progress progress-sm progress-light-base">
+              <div style="width: 80%" class="progress-bar progress-bar-danger"></div>
+            </div>
+          </li>
+          <li>
+            <p class="text-sm">Online Tutorial</p>
+            <div class="progress progress-sm progress-light-base">
+              <div style="width: 80%" class="progress-bar progress-bar-primary"></div>
+            </div>
+          </li>
+          <li>
+            <button class="btn btn-sm btn-dark btn-active-success">Checkout</button>
+          </li>
+        </ul>
+      </div>
+      <!-- Visible when footer positions are static -->
+      <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+      <div class="hide-fixed pull-right pad-rgt">Currently v2.2</div>
+      <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+      <!-- Remove the class name "show-fixed" and "hide-fixed" to make the content always appears. -->
+      <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+      <p class="pad-lft">&#0169; 2015 Your Company</p>
+    </footer>
+    <!--===================================================-->
+    <!-- END FOOTER -->
+    <!-- SCROLL TOP BUTTON -->
+    <!--===================================================-->
+    <button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
+    <!--===================================================-->
+  </div>
+  <!--===================================================-->
+  <!-- END OF CONTAINER -->
+  <!--JAVASCRIPT-->
+  <!--=================================================-->
+  <!--jQuery [ REQUIRED ]-->
+  {{!-- <script src="js/jquery-2.1.1.min.js"></script> --}}
+  <!--BootstrapJS [ RECOMMENDED ]-->
+  {{!-- <script src="js/bootstrap.min.js"></script> --}}
+  <!--Fast Click [ OPTIONAL ]-->
+  <script>
+    var user = {{{json user}}};
+    console.log('user', user);
+</script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="{{customerPath}}plugins/fast-click/fastclick.min.js"></script>
+  <!--Jquery Nano Scroller js [ REQUIRED ]-->
+  <script src="{{customerPath}}plugins/nanoscrollerjs/jquery.nanoscroller.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.3/build/alertify.min.js"></script>
+  <!--Metismenu js [ REQUIRED ]-->
+  {{!-- <script src="plugins/metismenu/metismenu.min.js"></script> --}}
+  <!--Jasmine Admin [ RECOMMENDED ]-->
+  <script src="{{customerPath}}js/scripts.js"></script>
+  <!--Switchery [ OPTIONAL ]-->
+  {{!-- <script src="plugins/switchery/switchery.min.js"></script>
+        <!--Jquery Steps [ OPTIONAL ]-->
+        <script src="plugins/parsley/parsley.min.js"></script>
+        <!--Jquery Steps [ OPTIONAL ]-->
+        <script src="plugins/jquery-steps/jquery-steps.min.js"></script>
+        <!--Bootstrap Select [ OPTIONAL ]-->
+        <script src="plugins/bootstrap-select/bootstrap-select.min.js"></script>
+        <!--Bootstrap Wizard [ OPTIONAL ]-->
+        <script src="plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+        <!--Masked Input [ OPTIONAL ]-->
+        <script src="plugins/masked-input/bootstrap-inputmask.min.js"></script>
+        <!--Bootstrap Validator [ OPTIONAL ]-->
+        <script src="plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
+        <!--Fullscreen jQuery [ OPTIONAL ]--> --}}
+  <script src="{{customerPath}}plugins/screenfull/screenfull.js"></script>
+  <!--Form Wizard [ SAMPLE ]-->
+  {{!-- <script src="js/demo/wizard.js"></script>
+        <!--Form Wizard [ SAMPLE ]-->
+        <script src="js/demo/form-wizard.js"></script> --}}
+  <!--DataTables [ OPTIONAL ]-->
+
+  {{#if haveDataTable}}
+  <script src="{{customerPath}}plugins/datatables/media/js/jquery.dataTables.js"></script>
+  <script src="{{customerPath}}plugins/datatables/media/js/dataTables.bootstrap.js"></script>
+  <script src="{{customerPath}}plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+  {{/if}}
+  {{#if haveEditor}}
+  <!--Summernote [ OPTIONAL ]-->
+  <script src="{{customerPath}}plugins/summernote/summernote.min.js"></script>
+  {{/if}}
+  {{#if haveDatepicker}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+  {{/if}}
+  <script src="{{customerPath}}js/demo/{{script}}.js"></script>
+
+</body>
+
+</html>

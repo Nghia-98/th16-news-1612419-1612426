@@ -1,0 +1,181 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+    <head>
+        <meta name="google-site-verification" content="T6aX4KfT6ztnETkeLyKD8pvN6tC5kYusW4wZujcpPlA" />
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Technews</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="bloge Minimal Portfolio Template">
+        <meta name="keywords" content="bloge, minimal, portfolio, ,template, landing page, mimimal portfolio, 
+        minimal portfolio template, bloge Minimal Portfolio Template">
+        
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="{{customerPath}}img/favicon.png">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+		<!-- all css here -->
+        <link rel="stylesheet" href="{{customerPath}}css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{customerPath}}css/material-design-iconic-font.min.css">
+        <link rel="stylesheet" href="{{customerPath}}css/et-line-fonts.css">
+        <link rel="stylesheet" href="{{customerPath}}css/animate.css">
+        <link rel="stylesheet" href="{{customerPath}}css/owl.carousel.css">
+        <link rel="stylesheet" href="{{customerPath}}css/meanmenu.css">
+        <link rel="stylesheet" href="{{customerPath}}css/venobox/venobox.css">
+        <link rel="stylesheet" href="{{customerPath}}css/section/shortcodes.css">
+        <link rel="stylesheet" href="{{customerPath}}style.css">
+        <link rel="stylesheet" href="{{customerPath}}css/responsive.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.3/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.3/build/css/themes/default.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.3/build/css/themes/semantic.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.3/build/css/themes/bootstrap.min.css"/>
+         {{#if style}}
+        <link rel="stylesheet" href="{{customerPath}}css/{{style}}.css">
+          {{/if}}
+    </head>
+    <body>
+      <!-- Loader -->
+	  <div id="site-loader" class="load-complete">
+      <div class="loader">
+        <div class="line-scale"><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+    </div>
+    <div class="wrapper">  
+      {{{ body }}}
+    </div>  
+        
+        <!--style-customizer start -->
+        <div class="style-customizer closed">
+            <a class="opener" href="#"><span aria-hidden="true" class="icon-profile-male"></span></a>
+                
+            <div class="side-about-area">
+                 <!-- about widget start -->
+                 {{#if user}}
+                <aside class="single-widget">
+                    <h4 class="widget-title at-big">Your Profile</h4>
+                    <div class="about-widget-area">
+                        <div class="head">
+                            <div class="top">
+                                <div class="name-profile">{{user.name}}</div>
+                            </div>
+                            <img class="image-profile"
+                                src="{{user.avatar}}" onerror="this.src = 'https://i.imgur.com/6RUJRyM.png';" >
+                            <div class="bottom">
+                                <div class="job-profile">
+                                  {{#ifCond user.status '==' 'guest'}} Khách {{/ifCond}}
+                                  {{#ifCond user.status '==' 'subscriber'}} Đọc giả {{/ifCond}}
+                                  {{#ifCond user.status '==' 'writer'}} Phóng viên {{/ifCond}}
+                                  {{#ifCond user.status '==' 'editor'}} Biên tập viên {{/ifCond}}
+                                  {{#ifCond user.status '==' 'admin'}} Phóng viên {{/ifCond}}
+                                </div> 
+                                {{!-- <div class="address-profile">
+                                  
+                                </div> --}}
+                            </div>
+                            <div class="row-logout-profile">
+                                <a href="/logout" class="btn btn-outline-danger">LOG OUT</a>
+                            </div>
+                        </div> 
+                        <div class="user-info-box">
+                            <div class="user-info-title"> 
+                                <!--
+                                <div class="col-16"> <i class="zmdi zmdi-account zmdi-hc-2x"></i> </div>
+                                <div class="col-84"> <span>User Information</span></div>
+                                -->
+                                <i class="zmdi zmdi-account zmdi-hc-2x"></i>
+                                <span>User Information</span>
+                            </div>
+                            <div class="user-email">
+                                <div class="col-16"> <i class="zmdi zmdi-email"></i> </div>
+                                <div class="col-16 flex-start"> <span> Email </span></div>
+                                <div class="col-68"> <p>{{user.email}}</p> </div>
+                            </div>
+                            <div class="user-phone">
+                                <div class="col-16"> <i class="zmdi zmdi-phone"></i> </div>
+                                <div class="col-16 flex-start"> <span> Phone </span> </div>
+                                <div class="col-68"> <p>{{user.phone}}</p></div>
+                            </div>
+                            <div class="user-facebook">
+                                <div class="col-16"> <i class="zmdi zmdi-facebook-box"></i> </div>
+                                <div class="col-16 flex-start"> <span> Face </span> </div>
+                                <div class="col-68"> <a href="{{user.facebookLink}}"> <p>{{user.facebookLink}}</p> </a> </div>
+                            </div>
+                            <div class="btn-edit">
+                                <button type="button" class="btn btn-outline-success" onclick="openUpdateModal()">Edit</button>
+                            </div>
+                        </div>
+                        <div class="plan-box">
+                           <div class="plan-title"> 
+                              <span>Plan</span>
+                            </div>
+                          {{#ifCond user.status '==' 'subscriber'}} 
+                              {{#ifDateInverse user.dateExpired }} 
+                              <div class="plan-info">
+                                Free
+                              </div>
+                              <div class="">
+                                Contact admin to upgrade VIP!
+                            </div>
+                            {{/ifDateInverse}}
+                            {{#ifDate user.dateExpired}}
+                              <div class="plan-info text-success">
+                                Premium
+                              </div>
+                             {{/ifDate}}
+                          {{/ifCond}}
+                           {{#ifCond user.status '!=' 'subscriber'}} 
+                            <div class="plan-info">
+                              Free
+                            </div>
+                           {{/ifCond}}
+                            
+                        </div>
+                    </div>                                
+                </aside>
+                {{else}}
+                  <div class="login-btn">
+                    <h4>You are not logged in</h4>
+                    <a class="btn btn-login" href="/login">
+                      Login
+                    </a>
+                  </div>
+                {{/if}}
+                <!-- about widget end -->
+                
+            </div>
+        </div>
+        {{> form-update}}
+        <!--style-customizer end -->
+    <script>
+    setTimeout(()=>{
+      document.querySelector("#site-loader").style.display = "none"
+    }, 0) 
+    </script>
+    <!-- Total JQuery plugin here -->
+        <script src="{{customerPath}}js/vendor/jquery-1.12.0.min.js"></script>
+        <script src="{{customerPath}}js/bootstrap.min.js"></script>
+        <script src="{{customerPath}}js/isotope.pkgd.min.js"></script>
+        <script src="{{customerPath}}js/owl.carousel.min.js"></script>
+        <script src="{{customerPath}}js/imagesloaded.pkgd.min.js"></script>
+        <script src="{{customerPath}}js/jquery.meanmenu.js"></script>
+        <script src="{{customerPath}}js/ajax-mail.js"></script>
+        <script src="{{customerPath}}js/plugins.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.3/build/alertify.min.js"></script>
+         {{#if havPartical}}
+          <script src="{{customerPath}}js/partical.js"></script>
+        {{/if}}
+         <script>
+            var user = {{{json user}}};
+            console.log('user', user);
+        </script>
+         {{#if script}}
+            <script src="{{customerPath}}js/{{script}}.js"></script>
+          {{/if}}
+         
+        <!-- <script src="js/headroom-active.js"></script> -->
+      	<script src="{{customerPath}}js/main.js"></script>
+    </body>
+</html>
